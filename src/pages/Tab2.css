@@ -19,6 +19,10 @@
     display: flex;
     justify-content: center;
   }
-  
+  .click-counter {
+    background-color: #33af44; 
+    padding: 10px; 
+    border-radius: 5px;
+}
   /* You can add more styling as needed */
   
