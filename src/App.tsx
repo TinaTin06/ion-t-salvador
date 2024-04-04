@@ -74,3 +74,25 @@ const App: React.FC = () => (
 );
 
 export default App;
+
+// Home Resources
+import Home from './pages/home';
+
+<IonRouterOutlet>
+  {/* Application default route */}
+  <Route exact path="/">
+    <Redirect to="/home" />
+  </Route>
+
+   {/* Home Router */}
+   <Route exact path="/home">
+    <Home />
+   </Route>
+<IonTabBar slot="bottom">
+   {/* Home Tab Button */}
+   <IonTabButton tab="home" href="/home">
+    <IonIcon aria-hidden="true" icon={home} />
+    <IonLabel>Home</IonLabel>
+   </IonTabButton>
+</IonTabBar>
+</IonRouterOutlet>
