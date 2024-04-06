@@ -37,7 +37,7 @@ const Bio: React.FC = () => {
 const Home: React.FC = () => {
     return (
         <div>
-            <h1>Welcome</h1>
+            <h1>Welcome to my Ion-T-Salvador</h1>
             <Bio />
             {/* Other content of the home page goes here */}
         </div>
