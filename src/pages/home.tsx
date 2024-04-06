@@ -25,5 +25,24 @@ return (
 );
 };
 
+import React from 'react';
+const Bio: React.FC = () => {
+    return (
+        <div>
+            <h2>Bio</h2>
+            <p>This is my bio.</p>
+        </div>
+    );
+};
+const Home: React.FC = () => {
+    return (
+        <div>
+            <h1>Welcome</h1>
+            <Bio />
+            {/* Other content of the home page goes here */}
+        </div>
+    );
+};
+
 //
 export default Home;
