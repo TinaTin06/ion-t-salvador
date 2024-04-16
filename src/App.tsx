@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -10,10 +11,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { calculatorOutline, ellipse, fingerPrintOutline, personCircleOutline, square, triangle } from 'ionicons/icons';
+import { calculatorOutline, fingerPrintOutline, personCircleOutline, homeOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons'; // Added eyeOutline and eyeOffOutline
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
+import Home from './pages/home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -25,9 +27,6 @@ import '@ionic/react/css/typography.css';
 
 /* Optional CSS utils that can be commented out */
 import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
@@ -36,63 +35,60 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={personCircleOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={fingerPrintOutline} />
-            <IonLabel>Click Counter</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={calculatorOutline} />
-            <IonLabel>Calculator</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const [isTabHidden, setIsTabHidden] = useState(false);
+
+  const toggleTabVisibility = () => {
+    setIsTabHidden(!isTabHidden);
+  };
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/tab1" component={Tab1} exact />
+            {!isTabHidden && (
+              <>
+                <Route path="/tab2" component={Tab2} exact />
+              </>
+            )}
+            <Route path="/tab3" component={Tab3} exact />
+            <Route path="/home" component={Home} exact />
+            <Route exact path="/">
+              <Redirect to="/tab1" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/tab1">
+              <IonIcon aria-hidden="true" icon={personCircleOutline} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+            {!isTabHidden && (
+              <>
+                <IonTabButton tab="tab2" href="/tab2">
+                  <IonIcon aria-hidden="true" icon={fingerPrintOutline} />
+                  <IonLabel>Click Counter</IonLabel>
+                </IonTabButton>
+              </>
+            )}
+            <IonTabButton tab="tab3" href="/tab3">
+              <IonIcon aria-hidden="true" icon={calculatorOutline} />
+              <IonLabel>Calculator</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="home" href="/home">
+              <IonIcon aria-hidden="true" icon={homeOutline} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton onClick={toggleTabVisibility}>
+              <IonIcon aria-hidden="true" icon={isTabHidden ? eyeOutline : eyeOffOutline} />
+              <IonLabel>{isTabHidden ? 'Show Tab' : 'Hide Tab'}</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
-
-// Home Resources
-import Home from './pages/home';
-
-<IonRouterOutlet>
-  {/* Application default route */}
-  <Route exact path="/">
-    <Redirect to="/home" />
-  </Route>
-
-   {/* Home Router */}
-   <Route exact path="/home">
-    <Home />
-   </Route>
-<IonTabBar slot="bottom">
-   {/* Home Tab Button */}
-   <IonTabButton tab="home" href="/home">
-    <IonIcon aria-hidden="true" icon={home} />
-    <IonLabel>Home</IonLabel>
-   </IonTabButton>
-</IonTabBar>
-</IonRouterOutlet>
