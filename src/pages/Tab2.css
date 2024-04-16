@@ -24,5 +24,11 @@
     padding: 10px; 
     border-radius: 5px;
 }
+
+/* Tab2.css */
+
+.hide-tab-bar {
+  display: none;
+}
   /* You can add more styling as needed */
   

@@ -30,7 +30,7 @@ const Tab2: React.FC = () => {
           <div className="button-container">
             <IonButton onClick={incrementCounter}>Click to Increment</IonButton>
             <IonButton onClick={resetCounter}>Reset</IonButton>
-            <div class="click-counter">0</div>
+            <div className="click-counter">0</div>
           </div>
         </div>
       </IonContent>
