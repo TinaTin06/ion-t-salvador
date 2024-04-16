@@ -53,8 +53,13 @@ const Calculator: React.FC = () => {
           </IonGrid>
         )}
       </IonContent>
+      {/* Hide tab button */}
+      <div className={`hide-tab-button ${isCalculatorVisible ? '' : 'hidden'}`} onClick={toggleCalculatorVisibility}>
+        <IonIcon icon={isCalculatorVisible ? eyeOff : eye} />
+      </div>
     </IonPage>
   );
 };
 
 export default Calculator;
+
