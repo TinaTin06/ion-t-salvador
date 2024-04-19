@@ -1,0 +1,10 @@
+.home-card {
+  width: 350px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.home-card-content {
+  font-size: 30px;
+}
+
