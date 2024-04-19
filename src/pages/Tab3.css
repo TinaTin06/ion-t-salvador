@@ -1,3 +1,24 @@
 #btns{
     font-size: 28px;
 }
+.hide-tab-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 9999;
+  }
+  
+  .hide-tab-button.hidden {
+    display: none;
+  }
+  
