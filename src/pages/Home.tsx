@@ -62,6 +62,16 @@ const Home: React.FC = () => {
                 </div>
               </IonCardContent>
             </IonCard>
+            <IonCard id="card2" onClick={goToTodolist} style={{ width: '350px', cursor: 'pointer' }}>
+              <IonCardContent style={{ height: '70px', fontSize: '30px', display: 'flex', alignItems: 'center', padding: 0 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px', flex: '20%', backgroundColor: 'var(--ion-color-light)', padding: 0 }}>
+                  <img alt="" id="todolist" src="../src/assets/img/todolist_gif.gif" />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px', flex: '80%', backgroundColor: 'var(--ion-color-success)', color: 'white', padding: 0 }}>
+                  Todo List
+                </div>
+              </IonCardContent>
+            </IonCard>
 
             
             <IonCard id="card4" style={{ width: '350px', cursor: 'pointer' }}>
