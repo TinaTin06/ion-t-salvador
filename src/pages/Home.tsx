@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -18,6 +18,21 @@ import { useHistory } from 'react-router-dom';
 const Home: React.FC = () => {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState('');
+  const [quote, setQuote] = useState('');
+
+  useEffect(() => {
+    fetchQuote();
+  }, []); // Fetch initial quote on component mount
+
+  const fetchQuote = async () => {
+    try {
+      const response = await fetch('https://api.quotable.io/random');
+      const data = await response.json();
+      setQuote(`${data.content} - ${data.author}`);
+    } catch (error) {
+      console.error('Error fetching quote:', error);
+    }
+  };
 
   const goToClickCounter = () => {
     history.push('/click_counter');
@@ -67,6 +82,10 @@ const Home: React.FC = () => {
               </IonCard>
             ))}
           </div>
+        </div>
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+          <p>Random Quote:</p>
+          <p>{quote}</p>
         </div>
       </IonContent>
     </IonPage>
