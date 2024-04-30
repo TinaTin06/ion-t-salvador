@@ -1,95 +1,138 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonIcon,
+  IonBackButton,
+  IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
+  IonCardSubtitle,
   IonCardTitle,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+  IonItemDivider,
   IonSearchbar,
+  IonBadge
 } from '@ionic/react';
-import { pulseOutline, calculatorOutline } from 'ionicons/icons';
-import { useHistory } from 'react-router-dom';
 
-const Home: React.FC = () => {
-  const history = useHistory();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [quote, setQuote] = useState('');
+//Custom CSS
 
-  useEffect(() => {
-    fetchQuote();
-  }, []); // Fetch initial quote on component mount
+//Ionic Icons
+import { speedometerOutline, calculator, pencil, chatbubble, logoIonic, logoReact, logoFirebase, readerOutline} from 'ionicons/icons';
 
-  const fetchQuote = async () => {
-    try {
-      const response = await fetch('https://api.quotable.io/random');
-      const data = await response.json();
-      setQuote(`${data.content} - ${data.author}`);
-    } catch (error) {
-      console.error('Error fetching quote:', error);
+//Additional Routes
+// import Click_counter from './Click_counter';
+
+
+const cardData = [
+  {
+    title: 'Click Counter',
+    icon: speedometerOutline,
+    subtitle: 'Applet #1',
+    link: '/clickcounter',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
     }
-  };
 
-  const goToClickCounter = () => {
-    history.push('/click_counter');
-  };
+  },
+  {
+    title: 'Calculator',
+    icon: calculator,
+    subtitle: 'Applet #2',
+    link: '/calculator',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+    title: 'To Do List',
+    icon: pencil,
+    subtitle: 'Applet #3',
+    link: '/todolist',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+    title: 'Qoute Generator',
+    icon: calculator,
+    subtitle: 'Applet #4',
+    link: '/qoutegenerator',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+  }
+  
+];
 
-  const goToCalculator = () => {
-    history.push('/calculator');
-  };
+  const Home: React.FC = () => {
 
-  const goToTodolist = () => {
-    history.push('/todolist');
-  };
+    {/*Dynamic Search*/}
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const handleSearch = (e: CustomEvent) => {
-    setSearchQuery(e.detail.value);
-  };
-
-  const filteredItems = [
-    { title: 'Click Counter', icon: pulseOutline, onClick: goToClickCounter },
-    { title: 'Calculator', icon: calculatorOutline, onClick: goToCalculator },
-    { title: 'Todo List', onClick: goToTodolist },
-    // Add other items here...
-  ].filter(item => item.title.toLowerCase().includes(searchQuery.toLowerCase()));
-
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-        <hr />
-      </IonHeader>
-      <IonContent fullscreen className="ion-padding">
-        <IonSearchbar placeholder="Search" onIonChange={handleSearch} autocapitalize={''}></IonSearchbar>
-        <div className="ion-text-center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-          <div> {/* Centering content */}
-            {filteredItems.map((item, index) => (
-              <IonCard key={index} onClick={item.onClick} style={{ width: '350px', cursor: 'pointer' }}>
-                <IonCardContent style={{ height: '70px', fontSize: '30px', display: 'flex', alignItems: 'center', padding: 0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px', flex: '20%', backgroundColor: 'var(--ion-color-light)', padding: 0 }}>
-                    {item.icon && <IonIcon icon={item.icon} slot="start" />}
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80px', flex: '80%', backgroundColor: 'var(--ion-color-primary)', color: 'white', padding: 0 }}>
-                    {item.title}
-                  </div>
-                </IonCardContent>
+    return (
+      <IonPage className="home-page">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Home</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Home</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+        {/*Dynamic Search*/}
+        <>
+          <IonSearchbar 
+            value={searchTerm} 
+            onIonInput={(e) => setSearchTerm(e.target.value ?? '')} 
+          />
+          
+          {cardData
+            .filter((card) => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map((card, index) => (
+              <IonCard key={index} href={card.link} id="card_body">
+                <IonCardHeader>
+                  <IonCardTitle>
+                    <IonGrid>
+                      <IonRow>
+                        <IonCol push=".75">
+                          <IonIcon className="home-card-icon" icon={card.icon} />
+                        </IonCol>
+                        <IonCol pull='3'>
+                          <div className="home-card-title">{card.title}</div>
+                          <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
+                        </IonCol>
+                      </IonRow>
+                    </IonGrid>
+                  </IonCardTitle>
+                </IonCardHeader>
               </IonCard>
-            ))}
-          </div>
-        </div>
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <p>Random Quote:</p>
-          <p>{quote}</p>
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default Home;
+          ))}
+        </>
+          </IonContent>
+        </IonPage>
+    );
+  };
+  
+  //
+  export default Home;
