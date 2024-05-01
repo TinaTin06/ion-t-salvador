@@ -26,9 +26,6 @@ import {
   IonBadge
 } from '@ionic/react';
 
-//Custom CSS
-import './Home.css';
-
 //Ionic Icons
 import { speedometerOutline, calculator, pencil, chatbubble, logoIonic, logoReact, logoFirebase, readerOutline} from 'ionicons/icons';
 
