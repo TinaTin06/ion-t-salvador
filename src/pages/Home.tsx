@@ -27,6 +27,7 @@ import {
 } from '@ionic/react';
 
 //Custom CSS
+import './Home.css';
 
 //Ionic Icons
 import { speedometerOutline, calculator, pencil, chatbubble, logoIonic, logoReact, logoFirebase, readerOutline} from 'ionicons/icons';
@@ -69,7 +70,7 @@ const cardData = [
   },
   {
     title: 'Qoute Generator',
-    icon: calculator,
+    icon: pencil,
     subtitle: 'Applet #4',
     link: '/qoutegenerator',
     tags: {
@@ -78,6 +79,14 @@ const cardData = [
     }
   },
   {
+    title: 'Notes',
+    icon: pencil,
+    subtitle: 'Applet #5',
+    link: '/notes',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
   }
   
 ];
