@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {
-  IonBackButton,
-  IonButton,
-  IonButtons,
+  // IonBackButton,
+  // IonButton,
+  // IonButtons,
   IonCard,
-  IonCardContent,
+  // IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
@@ -13,79 +13,59 @@ import {
   IonGrid,
   IonHeader,
   IonIcon,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
+  // IonInput,
+  // IonItem,
+  // IonLabel,
+  // IonList,
   IonPage,
   IonRow,
   IonTitle,
   IonToolbar,
-  IonItemDivider,
-  IonSearchbar,
-  IonBadge
+  // IonItemDivider,
+  IonSearchbar
 } from '@ionic/react';
 
+//Custom CSS
+import './Home.css';
+
 //Ionic Icons
-import { speedometerOutline, calculator, pencil, chatbubble, logoIonic, logoReact, logoFirebase, readerOutline} from 'ionicons/icons';
+import { speedometerOutline,calculator,pencil, chatbubble, readerOutline} from 'ionicons/icons';
 
 //Additional Routes
 // import Click_counter from './Click_counter';
-
 
 const cardData = [
   {
     title: 'Click Counter',
     icon: speedometerOutline,
     subtitle: 'Applet #1',
-    link: '/clickcounter',
-    tags: {
-      tag1: logoIonic,
-      tag2: logoReact
-    }
-
+    link: '/clickcounter'
   },
   {
     title: 'Calculator',
     icon: calculator,
     subtitle: 'Applet #2',
-    link: '/calculator',
-    tags: {
-      tag1: logoIonic,
-      tag2: logoReact
-    }
+    link: '/calculator'
   },
   {
     title: 'To Do List',
     icon: pencil,
     subtitle: 'Applet #3',
-    link: '/todolist',
-    tags: {
-      tag1: logoIonic,
-      tag2: logoReact
-    }
+    link: '/todolist'
   },
   {
-    title: 'Qoute Generator',
-    icon: pencil,
+    title: 'Quotes Generator',
+    icon: chatbubble,
     subtitle: 'Applet #4',
-    link: '/qoutegenerator',
-    tags: {
-      tag1: logoIonic,
-      tag2: logoReact
-    }
+    link: '/quotesgenerator'
   },
+  
   {
     title: 'Notes',
-    icon: pencil,
+    icon: readerOutline,
     subtitle: 'Applet #5',
-    link: '/notes',
-    tags: {
-      tag1: logoIonic,
-      tag2: logoReact
-    }
+    link: '/Notes'
   }
-  
 ];
 
   const Home: React.FC = () => {
@@ -94,7 +74,7 @@ const cardData = [
     const [searchTerm, setSearchTerm] = useState<string>('');
 
     return (
-      <IonPage className="home-page">
+      <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonTitle>Home</IonTitle>
@@ -116,13 +96,13 @@ const cardData = [
           {cardData
             .filter((card) => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
             .map((card, index) => (
-              <IonCard key={index} href={card.link} id="card_body">
+              <IonCard key={index} href={card.link}>
                 <IonCardHeader>
                   <IonCardTitle>
                     <IonGrid>
                       <IonRow>
                         <IonCol push=".75">
-                          <IonIcon className="home-card-icon" icon={card.icon} />
+                          <IonIcon className="home-card-icon" icon={card.icon} color="primary" />
                         </IonCol>
                         <IonCol pull='3'>
                           <div className="home-card-title">{card.title}</div>
@@ -142,3 +122,4 @@ const cardData = [
   
   //
   export default Home;
+  
