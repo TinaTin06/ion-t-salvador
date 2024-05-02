@@ -32,7 +32,7 @@ import { trashOutline, pencilOutline, checkmarkOutline } from 'ionicons/icons';
 
 // Firebase
 import { collection, addDoc, onSnapshot, updateDoc, doc, deleteDoc } from 'firebase/firestore';
-import { db } from './Todolist/Firebase';
+import { db } from './Firebase';
 
 const TodoList: React.FC = () => {
   const [todolist, setTodos] = useState<{ id: string; title: string; description: string; dateAdded: string; completed: boolean }[]>([]);
