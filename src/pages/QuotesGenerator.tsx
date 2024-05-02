@@ -33,7 +33,7 @@ import { trashOutline, pencilOutline } from 'ionicons/icons';
 
 // Firebase
 import { collection, addDoc, onSnapshot,updateDoc,doc, deleteDoc} from 'firebase/firestore';
-import { db } from './Firebase';
+import { db } from './QuotesGenerator/Firebase';
 
 const QuotesGenerator: React.FC = () => {
 
