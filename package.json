@@ -1,9 +1,12 @@
 {
-  "name": "ion-t-salvador",
+  "name": "ionic-app-base",
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "homepage" : "https://TinaTin06.github.io/ion-t-salvador/",
   "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
