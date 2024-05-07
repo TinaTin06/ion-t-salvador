@@ -46,37 +46,37 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           
-          <Route exact path="/clickcounter">
+          <Route exact path="/ion-t-salvador/clickcounter">
             <ClickCounter />
           </Route>
-          <Route exact path="/calculator">
+          <Route exact path="/ion-t-salvador/calculator">
             <Calculator />
           </Route>
-          <Route exact path="/todolist">
+          <Route exact path="/ion-t-salvador/todolist">
             <Todolist />
           </Route>
-          <Route exact path="/quotesgenerator">
+          <Route exact path="/ion-t-salvador/quotesgenerator">
             <QuotesGenerator />
           </Route>
-          <Route exact path="/notes">
+          <Route exact path="/ion-t-salvador/notes">
             <Notes />
           </Route>
 
 
-          <Route exact path="/">
-            <Redirect to="/home" />
+          <Route exact path="/ion-t-salvador/">
+            <Redirect to="/ion-t-salvador/home" />
           </Route>
-          <Route exact path="/home">
+          <Route exact path="/ion-t-salvador/home">
             <Home />
           </Route>
-          <Route exact path="/profile">
+          <Route exact path="/ion-t-salvador/profile">
             <Profile />
           </Route>
 
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
 
-          <IonTabButton tab="home" href="/home">
+          <IonTabButton tab="home" href="/ion-t-salvador/home">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
@@ -96,11 +96,11 @@ const App: React.FC = () => (
           </IonTabButton>
           */}
 
-          <IonTabButton tab="" href="">
+          <IonTabButton tab="" href="/ion-t-salvador/">
             <IonIcon aria-hidden="true" />
             <IonLabel></IonLabel>
           </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
+          <IonTabButton tab="profile" href="/ion-t-salvador/profile">
             <IonIcon aria-hidden="true" icon={personCircleOutline} />
             <IonLabel>Profile</IonLabel>
           </IonTabButton>
